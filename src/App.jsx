@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import styled from 'styled-components';
 import SearchInput from './js/components/SearchInput.jsx';
+import BooksResultList from './js/components/books-list/books-result-list.jsx';
 
 const Wrapper = styled.div`
-  min-width: 100vw;
+  min-width: 100%;
   min-height: 100vh;
-  background: #bedad9;
+  background: #f2f2f2;
 `;
 
 const Page = styled.div`
@@ -21,7 +22,7 @@ const Page = styled.div`
 const Heading = styled.h1`
   text-align: center;
   font-weight: bold;
-  font-style: italic;
+  text-transform: uppercase;
 `;
 
 class App extends Component {
@@ -45,7 +46,8 @@ class App extends Component {
   }
 
   searchBooks(query) {
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
+    const key ="AIzaSyCOQB5niyD2D1bKqKcyOxGm45-fD2gdjq8";
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${key}`)
     .then((response) => {
       return response.json();
     })
@@ -65,6 +67,7 @@ class App extends Component {
         <Page>
           <Heading>Book Finder</Heading>
           <SearchInput searchBooks={this.searchBooks} />
+          <BooksResultList books={this.state.bookResults} bookQuantity={this.state.bookResultQuantity} />
         </Page>
       </Wrapper>
     );
