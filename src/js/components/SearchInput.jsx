@@ -31,9 +31,15 @@ const Input = styled.input`
 const Button = styled.button`
     height: 35px;
     width: 100%
+    background: #16c08d;
+    border: none;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    cursor: pointer;
 
     @media (min-width: 650px) {
-        width: 120px;
+        width: 80px;
     }
 `;
 
