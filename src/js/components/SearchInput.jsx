@@ -50,11 +50,9 @@ class SearchInput extends Component {
     }
 
     handleChange(e) {
-        if(e.target.value.length > 0) {
-            this.setState({
-                searchTerm: e.target.value
-            })
-        }
+        this.setState({
+            searchTerm: e.target.value
+        })
     }
 
     onSubmit(e) {
