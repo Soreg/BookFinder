@@ -102,7 +102,6 @@ const BooksResultList = ({books}) => {
                 books.map((book, i) => {
                     const { volumeInfo } = book;
                     const { title, authors, imageLinks, publisher, infoLink } = volumeInfo;
-                    console.log(book);
                     return (
                         <Book key={i}>
                             <BookImageWrapper>

@@ -57,7 +57,7 @@ class App extends Component {
         this.SetBookResults(data)
       }
     }).catch(err => {
-      console.log(err);
+      console.error(err);
     }) 
   }
 
