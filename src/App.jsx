@@ -29,15 +29,34 @@ class App extends Component {
     super(props);
 
     this.state = {
+      bookResultQuantity: null,
       bookResults: null,
+      searchError: false
     }
 
     this.searchBooks = this.searchBooks.bind(this);
   }
 
+  SetBookResults(result) {
+    this.setState({
+      bookResultQuantity: result.totalItems,
+      bookResults: result.items
+    })
+  }
+
   searchBooks(query) {
-    // Search books here
-    console.log(query);
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      // If returned data has books, set new state
+      if(data.items && data.items.length > 0) {
+        this.SetBookResults(data)
+      }
+    }).catch(err => {
+      console.log(err);
+    }) 
   }
 
   render() {
